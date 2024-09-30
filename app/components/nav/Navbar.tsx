@@ -12,7 +12,7 @@ const Navbar = () => {
         top-0
         w-full
         bg-slate-200
-        z-0
+        z-30
         shadow-sm
         "
     >

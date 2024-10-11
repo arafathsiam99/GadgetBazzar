@@ -63,19 +63,16 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts]);
+  }, [cartProducts, product.id]);
   const productRating =
     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
     product.reviews.length;
 
-  const handleColorSelect = useCallback(
-    (value: SelectedImgType) => {
-      setCartProduct((prev) => {
-        return { ...prev, selectedImg: value };
-      });
-    },
-    [cartProduct.selectedImg]
-  );
+  const handleColorSelect = useCallback((value: SelectedImgType) => {
+    setCartProduct((prev) => {
+      return { ...prev, selectedImg: value };
+    });
+  }, []);
 
   const handleQtyIncrease = useCallback(() => {
     if (cartProduct.quantity === 99) {
@@ -131,7 +128,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
               <Button
                 label="View Cart"
                 outline
-                onclick={() => router.push("/cart")}
+                onClick={() => router.push("/cart")}
               />
             </div>
           </>
@@ -153,7 +150,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             <div className="max-w-[300px]">
               <Button
                 label="Add To Cart"
-                onclick={() => handleAddProductToCart(cartProduct)}
+                onClick={() => handleAddProductToCart(cartProduct)}
               />
             </div>
           </>

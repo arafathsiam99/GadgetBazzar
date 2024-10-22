@@ -67,7 +67,7 @@ export async function POST(request:Request){
             ]
         )
 
-        if(existing_order){
+        if(!existing_order){
             return NextResponse.json({error:'Invalid Payment Intent'},
                 {status:400}
             )
